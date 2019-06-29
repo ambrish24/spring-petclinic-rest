@@ -4,7 +4,7 @@ ALTER DATABASE petclinic
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
-GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
+GRANT ALL PRIVILEGES ON petclinic.* TO root@localhost WITH GRANT OPTION;
 
 USE petclinic;
 
@@ -75,8 +75,5 @@ CREATE TABLE IF NOT EXISTS roles (
   id int(11) NOT NULL AUTO_INCREMENT,
   username varchar(20) NOT NULL,
   role varchar(20) NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY uni_username_role (role,username),
-  KEY fk_username_idx (username),
-  CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username)
-) engine=InnoDB;
+  PRIMARY KEY (id)
+  ) engine=InnoDB;
